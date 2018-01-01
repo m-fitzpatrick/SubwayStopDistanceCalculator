@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Subway Stop Distance</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="dist/main.css" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="dist/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+
+    <script src="dist/app.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <header class="header">
+        <h3 class="display-5">Subway Stop Distance</h3>
+        <p>
+            Calculate the distance between two subway stops:
+            <br />
+            Enter the origin and destination subway stops and click "Calculate Distance"
+        </p>
+    </header>
+    <main class="main container">
+        <div class="row">
+            <div class="col-3 left-sidebar">
+                &nbsp;
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <form id="form">
+                            <label>Origin Station Name</label>
+                            <input type="text" class="form-control typeahead" placeholder="Origin" id="origin" data-provide="typeahead" disabled="disabled" required />
+
+                            <label>Destination Station Name</label>
+                            <input type="text" class="form-control typeahead" placeholder="Destination" id="destination" data-provide="typeahead" disabled="disabled" required />
+
+                            <button type="submit" id="calculate-button" class="btn brn-lg btn-primary" disabled="disabled" >Calculate Distance</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p id="message"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 right-sidebar">
+                &nbsp;
+            </div>
+        </div>
+    </main>
+<script type="text/javascript">
+    'use strict';
+    var pageHandler = new Ipreo.PageHandlers.SubwayStopPageHandler();
+    pageHandler.init();
+</script>
+<script type="x-template" id="response-template">
+    <p>Distance from <b>{{originName}}</b> to <b>{{destinationName}}</b>:</p>
+    <ul>
+        <li>
+            {{distanceInKm}} Kilometers
+        </li>
+        <li>
+            {{distanceInMiles}} Miles
+        </li>
+    </ul>
+</script>
+</body>
+</html>
